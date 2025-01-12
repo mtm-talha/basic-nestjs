@@ -190,7 +190,6 @@ SELECT * FROM users WHERE age > 18 ORDER BY name ASC;
 
 -- Indexes for optimization:
 CREATE INDEX idx_users_email ON users (email);
-CREATE INDEX idx_users_age ON users (age);
 ```
 
 ---
@@ -238,7 +237,7 @@ CREATE INDEX idx_users_age ON users (age);
 ### Performance Optimizations
 
 1. **Caching**: Implement Redis to cache frequently accessed data.
-2. **Database Indexing**: Add indexes to optimize query performance (e.g., `email`, `age`).
+2. **Database Indexing**: Add indexes to optimize query performance (e.g.`email`).
 3. **Pagination**: Use `limit` and `offset` in queries to handle large datasets.
 4. **Load Balancing**: Use a load balancer for horizontal scaling.
 
