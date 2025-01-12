@@ -5,7 +5,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { MoreThan, Repository } from 'typeorm';
 import { Users } from './entities/user.entity';
 import { ClientProxy } from '@nestjs/microservices';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -35,7 +35,7 @@ export class UsersService {
     return this.userRepository.save(user);
   }
 
-  async findUsers(
+  async getAllUsers(
     query: QueryParamsDto,
   ): Promise<{ data: Users[]; total: number; limit: number; offset: number }> {
     const { where, limit = 10, offset = '0', order = 'ASC' } = query;
@@ -55,6 +55,17 @@ export class UsersService {
       limit,
       offset: parseInt(offset),
     };
+  }
+
+  async findGreaterAgeUsers(age: number): Promise<Users[]> {
+    const data = await this.userRepository.find({
+      where: { age: MoreThan(age) },
+      order: {
+        name: 'ASC',
+      },
+    });
+
+    return data;
   }
 
   async getUserById(id: number): Promise<Users> {

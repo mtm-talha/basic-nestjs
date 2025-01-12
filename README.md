@@ -139,6 +139,40 @@ npm run start:prod
      ]
      ```
 
+3. **GET /users?where[age]=18&order=ASC**
+   - **Description**: Retrieve all users equal to 20 and order by name DESC.
+   - **Query Params**:
+     - `where[age]=20`
+     - `order=DESC`
+   - **Response**:
+
+     ```json
+     [
+       {
+         "id": 1,
+         "name": "John Doe",
+         "email": "john.doe@example.com",
+         "age": 25
+       }
+     ]
+     ```
+
+4. **GET /users/age/${age}**
+   - **Description**: It will Retrieve all users greater than 18 and order by name ASC.
+   - **Query Params**:
+     - `age=18`
+   - **Response**:
+     ```json
+     [
+       {
+         "id": 1,
+         "name": "John Doe",
+         "email": "john.doe@example.com",
+         "age": 18
+       }
+     ]
+     ```
+
 ---
 
 ## Database Schema

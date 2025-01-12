@@ -43,13 +43,18 @@ export class UsersController {
   }
 
   @Get()
-  findAll(@Query() query: QueryParamsDto) {
-    return this.usersService.findUsers(query);
+  getAllUsers(@Query() query: QueryParamsDto) {
+    return this.usersService.getAllUsers(query);
+  }
+
+  @Get('age/:age')
+  findGreaterAgeUsers(@Param('age') age: number) {
+    return this.usersService.findGreaterAgeUsers(age);
   }
 
   @Get(':id')
   @ApiParam({ name: 'id', description: 'User ID' })
-  findOne(@Param('id') id: number) {
+  getUserById(@Param('id') id: number) {
     return this.usersService.getUserById(id);
   }
 
