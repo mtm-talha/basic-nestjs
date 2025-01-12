@@ -45,7 +45,7 @@ This repository contains the solution for the NestJS backend developer test. The
 
    ```bash
    git clone https://github.com/basic-nestjs.git
-   cd nestjs-take-home
+   cd basic-nestjs
    ```
 
 2. Install dependencies:
